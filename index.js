@@ -1,13 +1,17 @@
 #!/usr/bin/env node
 
-var util = require('./util');
-var rand = util.rand;
-var randM = util.randM;
-var tones = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 0];
-var newSet = [];
+const util = require('./util');
+const rand = util.rand;
+const randM = util.randM;
+const setIndex = require('./setIndex');
+const constants = require('./constants');
+const intervals = constants.intervalMap;
+const PC = constants.PC;
 
-var PC = ['A', 'A#/Bb', 'B', 'C', 'C#/Db', 'D', 'D#/Eb', 'E', 'F', 'F#/Gb', 'G', 'G#/Ab'];
-var CSet = PCShift('C');
+var tones = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 0];
+
+const CSet = PCShift('C');
+
 /**
  * Returns a PC array whose first element is the passed PC.
  */
@@ -35,22 +39,8 @@ function setIndex(pc, set) {
   return -1;
 }
 
-const BASE_FREQ = 440; // A4
-const C4 = 261.626; // Middle C
-
-var intervals = {
-  m2: 1,
-  M2: 2,
-  m3: 3,
-  M3: 4,
-  P4: 5,
-  TT: 6,
-  P5: 7,
-  m6: 8,
-  M6: 9,
-  m7: 10,
-  M7: 11
-};
+const BASE_FREQ = constants.A4;
+const C4 = constants.C4;
 
 var enharmonics = {
 };
@@ -72,7 +62,6 @@ function SPNtoFreq(spn) {
   var stepsFrom440 = pcDiff('A4', spn);
   return freqOfPitchFromA(stepsFrom440);
 }
-
 
 function pcDiff(pc1, pc2) {
 
