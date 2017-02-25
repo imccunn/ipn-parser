@@ -1,0 +1,27 @@
+{
+  "name": "ipn-parser",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "mocha": "^3.2.0"
+  },
+  "scripts": {
+    "test": "mocha ./test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/imccunn/ipn-parser.git"
+  },
+  "author": "Ian D. McCunn <ianmccunn@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/imccunn/ipn-parser/issues"
+  },
+  "homepage": "https://github.com/imccunn/ipn-parser#readme"
+}

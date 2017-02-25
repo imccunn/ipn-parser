@@ -1,5 +1,8 @@
 #!/usr/bin/env node
 
+var util = require('./util');
+var rand = util.rand;
+var randM = util.randM;
 var tones = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 0];
 var newSet = [];
 
@@ -18,7 +21,7 @@ function PCShift(rootPitch) {
     if (check) {
       return newPCSet;
     }
-    newPCSet.push(newPCSet.shift());   
+    newPCSet.push(newPCSet.shift());
   }
   return newPCSet;
 }
@@ -58,14 +61,6 @@ var qualities = {
   dim: [0, 3, 6]
 };
 
-function rand() {
-  return Math.random();
-}
-
-function randM(min, max) {
-  return Math.floor(rand() * (max-min) + min);
-}
-
 function freqOfPitchFromA(stepsFrom440) {
   return BASE_FREQ * Math.pow(Math.pow(2, (1/12)), stepsFrom440);
 }
@@ -91,7 +86,7 @@ function pcDiff(pc1, pc2) {
 
   pc1 = pc1.length === 2 ? {pc: pc1[0], o: parseInt(pc1[1])} : {pc: pc1[0] + pc1[1], o: parseInt(pc1[2])};
   pc2 = pc2.length === 2 ? {pc: pc2[0], o: parseInt(pc2[1])} : {pc: pc2[0] + pc2[1], o: parseInt(pc2[2])};
-  
+
   var octDiff = pc1.o - pc2.o;
   pc1.cIndex = setIndex(pc1.pc, CSet);
   pc2.cIndex = setIndex(pc2.pc, CSet);
@@ -108,4 +103,3 @@ console.log(pcDiff('A2', 'A2'));
 console.log(SPNtoFreq('A3'));
 console.log(SPNtoFreq('A4'));
 console.log(SPNtoFreq('A5'));
-
