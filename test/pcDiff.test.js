@@ -31,4 +31,11 @@ describe('pcDiff specification - ', () => {
     expect(pcDiff('F#5', 'B3')).to.eql(-19);
   });
 
+  it('should throw a TypeError PC is not in regular alpha set', () => {
+    expect(pcDiff.bind(null, 'R#3', 'B3')).to.throw(TypeError);
+  });
+
+  it('should throw a TypeError PC is not in regular alpha set', () => {
+    expect(pcDiff.bind(null, 'A#3', 'T3')).to.throw(TypeError);
+  });
 });
