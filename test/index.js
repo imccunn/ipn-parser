@@ -20,7 +20,7 @@ describe('setIndex() test', () => {
     expect(setIndex('A#', set)).to.eql(1);
   });
 
-  it('should return 2 given input "B"', () => {
+  it('should return 2 given input B', () => {
     expect(setIndex('B', set)).to.eql(2);
   });
 
