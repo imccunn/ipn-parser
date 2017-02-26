@@ -1,12 +1,4 @@
 
-module.exports = {
-  intervalMap,
-  PC,
-  frequesncies: {
-    A4: 440,
-    C4: 261.626
-  }
-};
 
 var PC = ['A', 'A#/Bb', 'B', 'C', 'C#/Db', 'D', 'D#/Eb', 'E', 'F', 'F#/Gb', 'G', 'G#/Ab'];
 
@@ -22,4 +14,14 @@ var intervalMap = {
   M6: 9,
   m7: 10,
   M7: 11
+};
+
+module.exports = {
+  intervalMap: intervalMap,
+  PC: PC,
+  frequencies: {
+    A4: 440,
+    C4: 261.626
+  },
+  toneRowIndices: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 0]
 };

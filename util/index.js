@@ -4,7 +4,7 @@ module.exports = {
     return Math.random();
   },
 
-  randM: function randM(min, max) {
+  randM: function randInt(min, max) {
     return Math.floor(rand() * (max-min) + min);
   }
 }

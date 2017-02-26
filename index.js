@@ -2,33 +2,13 @@
 
 const util = require('./util');
 const rand = util.rand;
-const randM = util.randM;
+const randInt = util.randInt;
 const setIndex = require('./setIndex');
 const constants = require('./constants');
 const intervals = constants.intervalMap;
 const PC = constants.PC;
-
-var tones = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 0];
-
+const PCShift = require('./PCShift');
 const CSet = PCShift('C');
-
-/**
- * Returns a PC array whose first element is the passed PC.
- */
-function PCShift(rootPitch) {
-  var re;
-  if (rootPitch.length === 1) re = new RegExp(rootPitch + "(?!#|b)", "g");
-  else re = new RegExp(rootPitch, "g");
-  var newPCSet = PC.slice();
-  for (var i = 0; i < PC.length; i++) {
-    var check = re.exec(PC[i]);
-    if (check) {
-      return newPCSet;
-    }
-    newPCSet.push(newPCSet.shift());
-  }
-  return newPCSet;
-}
 
 function setIndex(pc, set) {
   var cRe = pc.length === 2 ? pc : pc + '(?!#|b)';
