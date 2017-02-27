@@ -40,11 +40,19 @@ describe(text, () => {
     expect(pcDiff('A#3', 'B6')).to.eql(37);
   });
 
-  it('should throw a TypeError PC is not in regular alpha set', () => {
+  it('should throw a TypeError when PC is not in regular alpha set', () => {
     expect(pcDiff.bind(null, 'R#3', 'B3')).to.throw(TypeError);
   });
 
-  it('should throw a TypeError PC is not in regular alpha set', () => {
+  it('should throw a TypeError when PC is not in regular alpha set', () => {
     expect(pcDiff.bind(null, 'A#3', 'T3')).to.throw(TypeError);
+  });
+
+  it('should throw a TypeError when PC is not in regular alpha set', () => {
+    expect(pcDiff.bind(null, 'A3', 'T3')).to.throw(TypeError);
+  });
+
+  it('should throw a TypeError when PC does not have an octave integer', () => {
+    expect(pcDiff.bind(null, 'B#4', 'G')).to.throw(TypeError);
   });
 });
