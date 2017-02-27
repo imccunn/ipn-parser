@@ -15,6 +15,10 @@ describe(text, () => {
     expect(pcDiff('C4', 'F3')).to.eql(-7);
   });
 
+  it('should return a difference of -3 with input A4 and F#4', () => {
+    expect(pcDiff('A4', 'F#4')).to.eql(-3);
+  });
+
   it('should return a difference of 0 with input C5 and C5', () => {
     expect(pcDiff('C5', 'C5')).to.eql(0);
   });
