@@ -3,6 +3,7 @@ const expect = chai.expect;
 
 const bpmToMs = require('../lib/temporalConverter').bpmToMs;
 const noteLengthToMs = require('../lib/temporalConverter').noteLengthToMs;
+const measureDurationMs = require('../lib/temporalConverter').measureDurationMs;
 
 describe('bpmToMs spec', () => {
   it('120 BPM should equal 500ms', () => {
@@ -35,5 +36,23 @@ describe('bpmToMs spec', () => {
 
   it('noteLengthToMs 1/4 at 110BPM should be 545.45ms', () => {
     expect(noteLengthToMs(1/4, 110)).to.eql(545.45);
+  });
+
+  describe('measureDurationMs spec', () => {
+    it('shoud give a measure duration of 2000ms when given [1, 4] time sig and 120bpm', () => {
+      expect(measureDurationMs([4, 4], 120)).to.eql(2000);
+    });
+
+    it('shoud give a measure duration of 500ms when given [1, 2] time sig and 120bpm', () => {
+      expect(measureDurationMs([1, 2], 120)).to.eql(500);
+    });
+
+    it('shoud give a measure duration of 1500ms when given [3, 4] time sig and 120bpm', () => {
+      expect(measureDurationMs([3, 4], 120)).to.eql(1500);
+    });
+
+    it('shoud give a measure duration of 2727.27ms when given [6, 8] time sig and 132bpm', () => {
+      expect(measureDurationMs([6, 8], 132)).to.eql(2727.27);
+    });
   });
 });
