@@ -8,8 +8,9 @@
   },
   "dependencies": {},
   "devDependencies": {
-    "chai": "^3.5.0",
-    "mocha": "^3.2.0"
+    "chai": "^4.1.2",
+    "mocha": "^4.0.1",
+    "webpack": "^3.8.1"
   },
   "scripts": {
     "test": "mocha ./test"
