@@ -4,12 +4,12 @@ function bpmToMs(bpm) {
 }
 
 function noteLengthToMs(noteLength, tempo) {
-  let raw = bpmToMs(tempo) * 4 * noteLength;
+  const raw = bpmToMs(tempo) * 4 * noteLength;
   return parseFloat(raw.toFixed(2));
 }
 
 function measureDurationMs(timeSignature, bpm) {
-  let raw = bpmToMs(bpm) * timeSignature[0];
+  const raw = bpmToMs(bpm) * timeSignature[0];
   return parseFloat(raw.toFixed(2));
 }
 

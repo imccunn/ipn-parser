@@ -1,4 +1,4 @@
-const pcDiff = require('../lib/pcDiff');
+const pcDiff = require('../src/pcDiff');
 const chai = require('chai');
 const expect = chai.expect;
 

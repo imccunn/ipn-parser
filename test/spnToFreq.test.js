@@ -1,10 +1,10 @@
 const chai = require('chai');
-const PCShift = require('../lib/PCShift');
-const util = require('../lib/util');
+const PCShift = require('../src/PCShift');
+const util = require('../src/util');
 const expect = chai.expect;
 const assert = chai.assert;
 
-const spnToFreq = require('../lib/spnToFreq');
+const spnToFreq = require('../src/spnToFreq');
 
 describe('spnToFreq specification - ', () => {
   it('should return approximate freq 1864.66 for A#6', () => {

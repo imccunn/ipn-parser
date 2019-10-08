@@ -1,4 +1,4 @@
-const PCShift = require('../lib/PCShift');
+const PCShift = require('../src/PCShift');
 const chai = require('chai');
 const expect = chai.expect;
 

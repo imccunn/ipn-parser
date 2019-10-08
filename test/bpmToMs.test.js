@@ -1,9 +1,9 @@
 const chai = require('chai');
 const expect = chai.expect;
 
-const bpmToMs = require('../lib/temporalConverter').bpmToMs;
-const noteLengthToMs = require('../lib/temporalConverter').noteLengthToMs;
-const measureDurationMs = require('../lib/temporalConverter').measureDurationMs;
+const bpmToMs = require('../src/temporalConverter').bpmToMs;
+const noteLengthToMs = require('../src/temporalConverter').noteLengthToMs;
+const measureDurationMs = require('../src/temporalConverter').measureDurationMs;
 
 describe('bpmToMs spec', () => {
   it('120 BPM should equal 500ms', () => {

@@ -1,7 +1,7 @@
 const chai = require('chai');
 const expect = chai.expect;
 
-const setIndex = require('../lib/setIndex');
+const setIndex = require('../src/setIndex');
 
 describe('setIndex() test', () => {
   let set = ['A', 'A#/Bb', 'B', 'C', 'C#/Db', 'D', 'D#/Eb', 'E', 'F', 'F#/Gb', 'G', 'G#/Ab'];

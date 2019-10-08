@@ -1,7 +1,7 @@
 const chai = require('chai');
 const expect = chai.expect;
 
-const freqOfNthKey = require('../lib/freqOfNthKey');
+const freqOfNthKey = require('../src/freqOfNthKey');
 
 describe('freqOfNthKey tests - ', () => {
   it('should return correct frequency given key number - 86:3729.310', () => {
