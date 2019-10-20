@@ -7,12 +7,23 @@ const ipnSetToFreqs = require('./ipnSetToFreqs');
 
 const generatePeriod = require('./generatePeriod');
 const bpmToMs = require('./temporalConverter').bpmToMs;
-
+const scales = {
+  maj: [0, 2, 4, 5, 7, 9, 11]
+}
 var qualities = {
-  maj: [0, 4, 7],
+  maj: [0, 4, 15],
   min: [0, 3, 7],
   dim: [0, 3, 6]
 };
+
+function genScale(basePitch, quality) {
+  let pcSet = pcShift(basePitch);
+  let scale = [];
+  for (let i = 0; i < quality.length; i++) {
+    scale.push(pcSet[quality[i]])
+  }
+  return scale;
+}
 
 function rGenPitchesTessitura(tess, startKey, n) {
   var rPitches = [];
@@ -24,7 +35,6 @@ function rGenPitchesTessitura(tess, startKey, n) {
 }
 
 var p = rGenPitchesTessitura(20, 30, 5);
-console.log(p);
 
 function genSetFromTess(startIpn, tess) {
   var startOctave = startIpn[startIpn.length-1];
@@ -40,12 +50,10 @@ function genSetFromTess(startIpn, tess) {
 }
 
 function genFreqChordFromIpnSet(quality, rootIpn) {
-  console.log(quality, rootIpn);
   var tessitura = quality[0] + quality[quality.length-1];
   var ipnSet = genSetFromTess(rootIpn, tessitura);
   let pitches = [];
   for (var i = 0; i < quality.length; i++) {
-    console.log(quality[i]);
     pitches.push(ipnSet[quality[i]]);
   }
   return ipnSetToFreqs(pitches);
@@ -57,26 +65,30 @@ function genFreqChordFromIpnSet(quality, rootIpn) {
 //   });
 // }
 
-var set = genSetFromTess('C4', 20);
-console.log('genSetFromTess: ', set);
-console.log(ipnSetToFreqs(set));
+// var set = genSetFromTess('C4', 20);
+// console.log('genSetFromTess: ', set);
+// console.log(ipnSetToFreqs(set));
 
-console.log('Freq chord: ');
-var q1 = qualities.maj;
-var rootIpn = 'C4';
-console.log('Quality: ', q1);
-console.log('Root IPN: ', rootIpn);
-console.log(genFreqChordFromIpnSet(q1, rootIpn));
+// console.log('Freq chord: ');
+// var q1 = qualities.maj;
+// var rootIpn = 'C4';
+// console.log('Quality: ', q1);
+// console.log('Root IPN: ', rootIpn);
+// console.log(genFreqChordFromIpnSet(q1, rootIpn));
 
-// Phrase/Period Generation
-let period = generatePeriod(7, 1, 4);
-let sBPM = 120;
-let ms = bpmToMs(120);
+// // Phrase/Period Generation
+// let period = generatePeriod(7, 1, 4);
+// let sBPM = 120;
+// let ms = bpmToMs(120);
 
-console.log('BPM: ', sBPM);
-console.log('Period: ', period);
-let numBeats = period.reduce((p,c) => p + c, 0);
-let numSeconds = ms * numBeats / 1000;
-console.log('Num Beats: ', numBeats);
-console.log('Length in mins: ',  numBeats / sBPM);
-console.log('length in seconds: ', numSeconds);
+// console.log('BPM: ', sBPM);
+// console.log('Period: ', period);
+// let numBeats = period.reduce((p,c) => p + c, 0);
+// let numSeconds = ms * numBeats / 1000;
+// console.log('Num Beats: ', numBeats);
+// console.log('Length in mins: ',  numBeats / sBPM);
+// console.log('length in seconds: ', numSeconds);
+
+
+const scalePitches = genScale('C#', scales.maj);
+console.log('scale pitches: ', scalePitches);
