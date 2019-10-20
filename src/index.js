@@ -1,18 +1,12 @@
 #!/usr/bin/env node
 
-const constants = require('./constants');
-const intervals = constants.intervalMap;
-const pcDiff = require('./pcDiff');
 const pcShift = require('./PCShift');
-const spnToFreq = require('./spnToFreq');
 const util = require('./util');
 const freqOfNthKey = require('./freqOfNthKey');
 const ipnSetToFreqs = require('./ipnSetToFreqs');
-const keyFreqHash = require('./keyFreqHash');
+
 const generatePeriod = require('./generatePeriod');
 const bpmToMs = require('./temporalConverter').bpmToMs;
-const BASE_FREQ = constants.A4;
-const C4 = constants.C4;
 
 var qualities = {
   maj: [0, 4, 7],
@@ -64,7 +58,7 @@ function genFreqChordFromIpnSet(quality, rootIpn) {
 // }
 
 var set = genSetFromTess('C4', 20);
-console.log(set);
+console.log('genSetFromTess: ', set);
 console.log(ipnSetToFreqs(set));
 
 console.log('Freq chord: ');
@@ -73,11 +67,9 @@ var rootIpn = 'C4';
 console.log('Quality: ', q1);
 console.log('Root IPN: ', rootIpn);
 console.log(genFreqChordFromIpnSet(q1, rootIpn));
-console.log('hashFreqKey: ', keyFreqHash);
-
 
 // Phrase/Period Generation
-let period = generatePeriod(1, 4);
+let period = generatePeriod(7, 1, 4);
 let sBPM = 120;
 let ms = bpmToMs(120);
 
