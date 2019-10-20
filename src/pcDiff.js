@@ -16,15 +16,18 @@ const pcDiff = (pc1, pc2) => {
   var pc1 = pc1.split('');
   var pc2 = pc2.split('');
 
+  // assuming only a length of two means no accidental
   pc1 = pc1.length === 2 ? {pc: pc1[0], o: parseInt(pc1[1])} : {pc: pc1[0] + pc1[1], o: parseInt(pc1[2])};
   pc2 = pc2.length === 2 ? {pc: pc2[0], o: parseInt(pc2[1])} : {pc: pc2[0] + pc2[1], o: parseInt(pc2[2])};
-
+  
   const octDiff = pc1.o === pc2.o ? 0 : -(pc1.o - pc2.o);
 
-  const pci1 = pc1.cIndex - setIndex(pc1.pc, CSet);
-  const pci2 = pc2.cIndex - setIndex(pc2.pc, CSet);
+  // Set indices for C-set
+  const pci1 = setIndex(pc1.pc, CSet);
+  const pci2 = setIndex(pc2.pc, CSet);
 
-  let ic = pc1.cIndex + pc2.cIndex;
+  let ic;
+
   if (octDiff > 0) ic = (12 - pci1) + pci2 + (12 * (octDiff - 1));
 
   if (octDiff < 0) ic = -(pci1 + (12 - pci2) - (12 * (octDiff + 1)));
